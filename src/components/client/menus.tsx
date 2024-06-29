@@ -1,16 +1,21 @@
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
-import type { MenuProps } from 'antd';
-import { Drawer, Menu } from 'antd';
+import { Drawer } from 'antd';
 
-type MenuItem = Required<MenuProps>['items'][number];
-const items: MenuItem[] = [
-    {
-        key: 'sub1',
-        label: 'Navigation One'
-    }
-];
+const linkList = [{
+    name: 'Home',
+    url: '/'
+}, {
+    name: 'Project',
+    url: '/'
+}, {
+    name: 'Blog',
+    url: '/'
+},{
+    name: 'sign-in',
+    url: '/'
+}];
 
 const Menus: React.FC = () => {
     const [open, setOpen] = useState(false);
@@ -23,10 +28,6 @@ const Menus: React.FC = () => {
         setOpen(false);
     };
 
-    const onClick: MenuProps['onClick'] = (e) => {
-        console.log('click ', e);
-    };
-
     return (
         <div className="relative">
             <button onClick={showDrawer}>
@@ -34,14 +35,15 @@ const Menus: React.FC = () => {
             </button>
 
             <Drawer title="Menu" onClose={onClose} open={open} width="300">
-                <Menu
-                    onClick={onClick}
-                    style={{ width: 256 }}
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
-                    mode="inline"
-                    items={items}
-                />
+                <div>
+                    <ul>
+                        {linkList.map((link, index) => (
+                            <li key={index} className='py-3 border-b text-center'>
+                                <Link className='text-[#333]' href={link.url}>{link.name}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </Drawer>
         </div>
     );

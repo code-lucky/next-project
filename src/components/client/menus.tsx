@@ -29,7 +29,7 @@ const Menus: React.FC = () => {
     };
 
     return (
-        <div className="relative">
+        <div>
             <button onClick={showDrawer}>
                 <img src="/icons/bars_3.svg" alt="menu" width={28} height={28} />
             </button>

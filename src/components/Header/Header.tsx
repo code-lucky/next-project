@@ -19,9 +19,9 @@ export default async function Header() {
               <li>
                 <Link href="/">Project</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/">Blog</Link>
-              </li>
+              </li> */}
             </menu>
             <Link href="/">Sign in</Link>
           </div>
